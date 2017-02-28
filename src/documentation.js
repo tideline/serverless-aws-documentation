@@ -1,16 +1,12 @@
 'use strict';
 
-const documentationProperties = ['description', 'summary'];
-
 const globalDocumentationParts = require('./globalDocumentationParts.json');
 const functionDocumentationParts = require('./functionDocumentationParts.json');
 
 function  getDocumentationProperties(def) {
   const docProperties = new Map();
-  documentationProperties.forEach((key) => {
-    if (def[key]) {
-      docProperties.set(key, def[key]);
-    }
+  Object.entries(def).forEach(([key, val]) => {
+      docProperties.set(key, val);
   });
   return docProperties;
 }
